@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.button1 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -57,12 +58,14 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.checkBox2 = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -76,7 +79,7 @@
             this.button1.Location = new System.Drawing.Point(20, 195);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(335, 23);
-            this.button1.TabIndex = 0;
+            this.button1.TabIndex = 10;
             this.button1.Text = "Get Identifier";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -118,7 +121,7 @@
             this.textBox_Api.Name = "textBox_Api";
             this.textBox_Api.PasswordChar = '*';
             this.textBox_Api.Size = new System.Drawing.Size(181, 20);
-            this.textBox_Api.TabIndex = 5;
+            this.textBox_Api.TabIndex = 2;
             // 
             // label3
             // 
@@ -135,7 +138,7 @@
             this.textBox_Email.Location = new System.Drawing.Point(174, 12);
             this.textBox_Email.Name = "textBox_Email";
             this.textBox_Email.Size = new System.Drawing.Size(181, 20);
-            this.textBox_Email.TabIndex = 7;
+            this.textBox_Email.TabIndex = 1;
             // 
             // label4
             // 
@@ -152,7 +155,7 @@
             this.textBox_ZoneID.Location = new System.Drawing.Point(174, 91);
             this.textBox_ZoneID.Name = "textBox_ZoneID";
             this.textBox_ZoneID.Size = new System.Drawing.Size(181, 20);
-            this.textBox_ZoneID.TabIndex = 9;
+            this.textBox_ZoneID.TabIndex = 4;
             // 
             // label5
             // 
@@ -171,14 +174,14 @@
             this.textBox_ID.Name = "textBox_ID";
             this.textBox_ID.ReadOnly = true;
             this.textBox_ID.Size = new System.Drawing.Size(181, 20);
-            this.textBox_ID.TabIndex = 11;
+            this.textBox_ID.TabIndex = 5;
             // 
             // textBox_Domain
             // 
             this.textBox_Domain.Location = new System.Drawing.Point(174, 65);
             this.textBox_Domain.Name = "textBox_Domain";
             this.textBox_Domain.Size = new System.Drawing.Size(181, 20);
-            this.textBox_Domain.TabIndex = 13;
+            this.textBox_Domain.TabIndex = 3;
             // 
             // label6
             // 
@@ -258,7 +261,7 @@
             this.checkBox1.Location = new System.Drawing.Point(62, 165);
             this.checkBox1.Name = "checkBox1";
             this.checkBox1.Size = new System.Drawing.Size(106, 19);
-            this.checkBox1.TabIndex = 21;
+            this.checkBox1.TabIndex = 9;
             this.checkBox1.Text = "HTTP Proxy";
             this.checkBox1.UseVisualStyleBackColor = true;
             // 
@@ -270,7 +273,7 @@
             this.radioButton1.Location = new System.Drawing.Point(174, 140);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(33, 19);
-            this.radioButton1.TabIndex = 22;
+            this.radioButton1.TabIndex = 6;
             this.radioButton1.TabStop = true;
             this.radioButton1.Text = "A";
             this.radioButton1.UseVisualStyleBackColor = true;
@@ -292,7 +295,7 @@
             this.radioButton2.Location = new System.Drawing.Point(213, 140);
             this.radioButton2.Name = "radioButton2";
             this.radioButton2.Size = new System.Drawing.Size(57, 19);
-            this.radioButton2.TabIndex = 24;
+            this.radioButton2.TabIndex = 7;
             this.radioButton2.TabStop = true;
             this.radioButton2.Text = "AAAA";
             this.radioButton2.UseVisualStyleBackColor = true;
@@ -304,7 +307,7 @@
             this.radioButton3.Location = new System.Drawing.Point(272, 140);
             this.radioButton3.Name = "radioButton3";
             this.radioButton3.Size = new System.Drawing.Size(65, 19);
-            this.radioButton3.TabIndex = 25;
+            this.radioButton3.TabIndex = 8;
             this.radioButton3.TabStop = true;
             this.radioButton3.Text = "CNAME";
             this.radioButton3.UseVisualStyleBackColor = true;
@@ -339,6 +342,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.checkBox2);
             this.tabPage2.Controls.Add(this.label2);
             this.tabPage2.Controls.Add(this.radioButton3);
             this.tabPage2.Controls.Add(this.button1);
@@ -375,6 +379,16 @@
             this.tabPage3.Text = "Logs";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(6, 206);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(370, 23);
+            this.button3.TabIndex = 15;
+            this.button3.Text = "Clear Logs";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click_1);
+            // 
             // richTextBox1
             // 
             this.richTextBox1.DetectUrls = false;
@@ -386,16 +400,6 @@
             this.richTextBox1.TabIndex = 0;
             this.richTextBox1.Text = "";
             this.richTextBox1.TextChanged += new System.EventHandler(this.richTextBox1_TextChanged);
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(6, 206);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(370, 23);
-            this.button3.TabIndex = 15;
-            this.button3.Text = "Clear Logs";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click_1);
             // 
             // tabPage4
             // 
@@ -409,37 +413,56 @@
             this.tabPage4.Text = "About";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
-            // label11
+            // label13
             // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Unispace", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(96, 86);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(199, 15);
-            this.label11.TabIndex = 5;
-            this.label11.Text = "Created with <3 by bruxo";
+            this.label13.AutoSize = true;
+            this.label13.Font = new System.Drawing.Font("Unispace", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label13.Location = new System.Drawing.Point(117, 115);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(133, 14);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "github.com/bruxo00";
+            this.label13.Click += new System.EventHandler(this.label13_Click);
             // 
             // label12
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Unispace", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(118, 101);
+            this.label12.Location = new System.Drawing.Point(107, 101);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(154, 14);
             this.label12.TabIndex = 6;
             this.label12.Text = "twitter.com/imBruxoPT";
             this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
-            // label13
+            // label11
             // 
-            this.label13.AutoSize = true;
-            this.label13.Font = new System.Drawing.Font("Unispace", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(128, 115);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(133, 14);
-            this.label13.TabIndex = 7;
-            this.label13.Text = "github.com/bruxo00";
-            this.label13.Click += new System.EventHandler(this.label13_Click);
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Unispace", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(85, 86);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(199, 15);
+            this.label11.TabIndex = 5;
+            this.label11.Text = "Created with <3 by bruxo";
+            // 
+            // notifyIcon1
+            // 
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "CloudIP";
+            this.notifyIcon1.Visible = true;
+            this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
+            // checkBox2
+            // 
+            this.checkBox2.AutoSize = true;
+            this.checkBox2.Font = new System.Drawing.Font("Unispace", 9.749999F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBox2.Location = new System.Drawing.Point(185, 165);
+            this.checkBox2.Name = "checkBox2";
+            this.checkBox2.Size = new System.Drawing.Size(170, 19);
+            this.checkBox2.TabIndex = 24;
+            this.checkBox2.Text = "Start with Windows";
+            this.checkBox2.UseVisualStyleBackColor = true;
+            this.checkBox2.CheckedChanged += new System.EventHandler(this.checkBox2_CheckedChanged);
             // 
             // Form1
             // 
@@ -454,6 +477,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "CloudIP";
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
@@ -503,6 +527,8 @@
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.CheckBox checkBox2;
     }
 }
 

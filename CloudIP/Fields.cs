@@ -9,5 +9,7 @@
         public string domainID { get; set; }
         public string dnsType { get; set; }
         public bool httpProxy { get; set; }
+        public bool warningSent { get; set; }
+        public bool startup { get; set; }
     }
 }

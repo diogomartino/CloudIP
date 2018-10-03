@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Win32;
+using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -22,15 +23,21 @@ namespace CloudIP
         public Form1()
         {
             InitializeComponent();
+            LoadCloudIP();
+        }
 
-            AppDomain.CurrentDomain.ProcessExit += new EventHandler(OnProcessExit);
-
+        private void LoadCloudIP()
+        {
             if (!Directory.Exists(appFolder))
+            {
                 Directory.CreateDirectory(appFolder);
+            }
             else
+            {
                 LoadS();
+            }
 
-            if(File.Exists(appFolder + "/logs.txt"))
+            if (File.Exists(appFolder + "/logs.txt"))
             {
                 string allLogs = File.ReadAllText(appFolder + "/logs.txt");
                 richTextBox1.Text = allLogs;
@@ -151,17 +158,13 @@ namespace CloudIP
                 data.content = host;
                 data.proxied = checkBox1.Checked;
 
-                Debug.WriteLine(checkBox1.Checked);
-
                 request.AddJsonBody(data);
 
                 IRestResponse response = client.Execute(request);
-                var content = response.Content; // raw content as string
+                var content = response.Content;
 
-                Debug.WriteLine(content);
-
-                string time = DateTime.Now.ToString("hh:mm:ss"); // includes leading zeros
-                string date = DateTime.Now.ToString("dd/MM/yy"); // includes leading zeros
+                string time = DateTime.Now.ToString("hh:mm:ss");
+                string date = DateTime.Now.ToString("dd/MM/yy");
 
                 label10.BeginInvoke((MethodInvoker)delegate () { this.label10.Text = date + " " + time; ; });
                 label10.ForeColor = Color.Black;
@@ -257,15 +260,9 @@ namespace CloudIP
             fields.domainID = textBox_ID.Text;
             fields.domainName = textBox_Domain.Text;
             fields.zoneID = textBox_ZoneID.Text;
-
-            if (radioButton1.Checked)
-                fields.dnsType = "A";
-            else if (radioButton2.Checked)
-                fields.dnsType = "AAAA";
-            else
-                fields.dnsType = "CNAME";
-
+            fields.dnsType = GetDNSType();
             fields.httpProxy = checkBox1.Checked;
+            fields.startup = checkBox2.Checked;
 
             string json = JsonConvert.SerializeObject(fields);
 
@@ -292,17 +289,13 @@ namespace CloudIP
                 radioButton3.Checked = true;
 
             checkBox1.Checked = fields.httpProxy;
+            checkBox2.Checked = fields.startup;
         }
 
         private void button4_Click(object sender, EventArgs e)
         {
             Save();
             Environment.Exit(-1);
-        }
-
-        private void OnProcessExit(object sender, EventArgs e)
-        {
-
         }
 
         private void button3_Click_1(object sender, EventArgs e)
@@ -326,6 +319,42 @@ namespace CloudIP
         private void label12_Click(object sender, EventArgs e)
         {
             Process.Start("https://twitter.com/imBruxoPT");
+        }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)
+            {
+                Hide();
+                notifyIcon1.Visible = true;
+
+                if(!fields.warningSent)
+                {
+                    notifyIcon1.BalloonTipIcon = ToolTipIcon.Info;
+                    notifyIcon1.BalloonTipTitle = "Reminder";
+                    notifyIcon1.BalloonTipText = "CloudIP is till running in the background, don't worry :)";
+                    notifyIcon1.ShowBalloonTip(3000);
+
+                    fields.warningSent = true;
+                }
+            }
+        }
+
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Show();
+            this.WindowState = FormWindowState.Normal;
+            notifyIcon1.Visible = false;
+        }
+
+        private void checkBox2_CheckedChanged(object sender, EventArgs e)
+        {
+            RegistryKey rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+
+            if (checkBox2.Checked)
+                rk.SetValue("CloudIP", Application.ExecutablePath);
+            else
+                rk.DeleteValue("CloudIP", false);
         }
     }
 
