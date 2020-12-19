@@ -3,6 +3,8 @@
 
 CloudIP is a tool like no-ip, which creates a dynamic dns. If you have a dynamic IP and you wish to have a domain always pointing to that dynamic IP and you want to use your own domain, you can use CloudIP.
 
+⚠️ **NodeJS alternative:** [cloudflare-ip-monitor](https://github.com/bruxo00/cloudflare-ip-monitor)
+
 ## How to setup?
 
 [![Video](https://img.youtube.com/vi/G_7WMrLzUeg/0.jpg)](https://www.youtube.com/watch?v=G_7WMrLzUeg)
